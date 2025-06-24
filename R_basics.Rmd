@@ -2,8 +2,13 @@
 title: "Introduction to Data Science"
 author: "Victor Coppin"
 date: "2025-06-24"
-output: html_document
+output: 
+  html_document:
+    toc: true # Enables the table of contents in the rendered HTML
+    toc_depth: 2 #Include headings up to ## level in the ToC
+    number_sections: true #Adds automatic numbering to headers
 ---
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -180,8 +185,7 @@ seq(0, 1, length.out = 11) # generates 11 equally spaced numbers from 0 to 1
 
 #### Sum
 
-The sum of vector elements returns the sum of all the values presents in its arguments
-
+The `sum()` function returns the total of all values present in its arguments.
 
 ```{r}
 x <- 10
@@ -204,9 +208,13 @@ class(a)
 
 ### Data Frame
 
->The most common way of storing a dataset in R is in a data frame. Conceptually, we can think of a data frame as a table with rows representing observations and the different variables reported for each observation defining the columns. Data frames are particularly useful for datasets because we can combine different data types into one object.
+>The most common way of storing a dataset in R is in a data frame. Conceptually, we can think of a data frame as a table with rows representing observations and the different variables reported for each observation defining the columns. Data frames are particularly useful for datasets because we can combine **different data types into one object**.
 
 >A large proportion of data analysis challenges start with data stored in a data frame. For example, we stored the data for our motivating example in a data frame. You can access this dataset by loading the dslabs library and loading the murders dataset using the data function:
+
+The `data()` function without arguments lists available datasets from currently loaded packages.
+To actually load a dataset, use it with the dataset name: `data(murders)`
+
 
 ```{r, message=FALSE,warning=FALSE}
 library(dslabs)
@@ -214,6 +222,82 @@ data(murders) # load the dataset "murders" into the environments (memory) allowi
 ```
 
 ```{r}
-class(murders) 
+class(murders) # check if murders is indeed a data.frame
 ```
+
+#### Structure of an object
+
+The function `str` shows us the structure of an object : 
+
+```{r}
+str(murders)
+library(dplyr)
+glimpse(murders) # For compact data view 
+```
+
+We can see that murders is a `data.frame` with 51 observations of 5 variables :
+- `$state`: a character variable like "Alabama"
+- `$abb` : character variable as the abbreviation of the state name
+- `$region` : factor, useful to store categorical data and more efficient than storing characters
+- `$population` and `$total` are numeric data 
+
+
+#### The accessor : $
+For our analysis, we will need to access the different variables represented by columns included in this data frame. To do this, we use the accessor operator `$`
+
+
+```{r}
+# Showing the first 6 lines of the dataset
+head(murders)
+
+# Using the accessor operator to obtain the population column
+murders$state
+
+# Determining how many entries are in a vector 
+pop <- murders$population
+length(pop)
+
+# Factors are another type of class : 
+class(murders$region)
+levels(murders$region)
+
+
+```
+
+#### Vectors: numerics, characters and logical
+
+The object `murder$population` is not one number but several, it is a numeric vector of length 51.
+To store character strings, vectors can also be of class character. For example, the state names are characters:
+
+```{r}
+class(murders$state)
+```
+
+Logical vectors : TRUE/FALSE
+
+```{r}
+z <- 3 == 2 # == is a relational operator, asking if 3 is equal to 2
+z
+class(z)
+```
+
+#### Factors 
+
+We saw that in the murders data set, region is a factor of 4 levels.
+
+```{r}
+levels(murders$region) 
+```
+
+>In the background, R stores these levels as integers and keeps a map to keep track of the labels. This is more memory efficient than storing all the characters. Note that the levels have an order that is different from the order of appearance in the factor object. The default is for the levels to follow alphabetical order. However, often we want the levels to follow a different order.
+The function reorder lets us change the order of the levels of a factor variable based on a summary computed on a numeric vector.
+
+**Reorder the levels of the region by the total number of murders rather than the alphabetical order**: 
+```{r}
+region <- murders$region
+value <- murders$total 
+region <- reorder(region,value, FUN = sum)
+levels(region)
+```
+
 

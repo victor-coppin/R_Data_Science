@@ -356,9 +356,19 @@ display: none;
 
 </div>
 
+<div id="TOC">
+<ul>
+<li><a href="#introduction" id="toc-introduction"><span class="toc-section-number">1</span> Introduction</a>
+<ul>
+<li><a href="#installation-and-packages" id="toc-installation-and-packages"><span class="toc-section-number">1.1</span> Installation and packages</a></li>
+<li><a href="#objects" id="toc-objects"><span class="toc-section-number">1.2</span> Objects</a></li>
+<li><a href="#data-types" id="toc-data-types"><span class="toc-section-number">1.3</span> Data types</a></li>
+</ul></li>
+</ul>
+</div>
 
-<div id="introduction" class="section level1">
-<h1>Introduction</h1>
+<div id="introduction" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Introduction</h1>
 <p>This file follows the course <a href="Introduction%20to%20Data%20Science.pdf"><em>Introduction to Data
 Science by Rafael A. Irizarry</em></a></p>
 <p>R was developed by statisticians as an interactive environment for
@@ -369,10 +379,12 @@ data analysis<br />
 macOS, UNIX/Linux - Scripts and data objects can be shared seamlessly
 across platforms - Active community : <a href="https://stats.stackexchange.com/questions/138/free-resources-for-learning-r">Free
 resources for learning R</a></p>
-<div id="installation-and-packages" class="section level2">
-<h2>Installation and packages</h2>
-<div id="scripts-and-markdown" class="section level3">
-<h3>Scripts and Markdown</h3>
+<div id="installation-and-packages" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Installation and
+packages</h2>
+<div id="scripts-and-markdown" class="section level3" number="1.1.1">
+<h3><span class="header-section-number">1.1.1</span> Scripts and
+Markdown</h3>
 <ul>
 <li><strong>Create a new Script (.R)</strong>:
 <code>Ctrl + Shift + N</code><br />
@@ -381,8 +393,8 @@ resources for learning R</a></p>
 <code>Ctrl + S</code></li>
 </ul>
 </div>
-<div id="packages" class="section level3">
-<h3>Packages</h3>
+<div id="packages" class="section level3" number="1.1.2">
+<h3><span class="header-section-number">1.1.2</span> Packages</h3>
 <p>To install packages, inside the Console :</p>
 <pre class="r"><code>install.packages(&quot;ggplot2&quot;) # install the ggplot2 library
 install.packages(&quot;dslabs&quot;) # install the Harvard dslabs R package
@@ -404,10 +416,11 @@ chunk : <code>Ctrl + Shift + Enter</code> - Hides messages
 <pre class="r"><code>library(dslabs)</code></pre>
 <pre><code>## Warning: le package &#39;dslabs&#39; a été compilé avec la version R 4.4.3</code></pre>
 </div>
-<div id="running-commands" class="section level3">
-<h3>Running commands</h3>
-<div id="shortcuts" class="section level4">
-<h4>shortcuts:</h4>
+<div id="running-commands" class="section level3" number="1.1.3">
+<h3><span class="header-section-number">1.1.3</span> Running
+commands</h3>
+<div id="shortcuts" class="section level4" number="1.1.3.1">
+<h4><span class="header-section-number">1.1.3.1</span> shortcuts:</h4>
 <ul>
 <li><strong>Run an entire script</strong>:
 <code>Ctrl + Shift + Enter</code></li>
@@ -427,10 +440,10 @@ murders %&gt;%
 </div>
 </div>
 </div>
-<div id="objects" class="section level2">
-<h2>Objects</h2>
-<div id="variables" class="section level3">
-<h3>Variables</h3>
+<div id="objects" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Objects</h2>
+<div id="variables" class="section level3" number="1.2.1">
+<h3><span class="header-section-number">1.2.1</span> Variables</h3>
 <p>To define a variable we may use the assignment symbol:
 <code>&lt;-</code></p>
 <p>Code to solve the equation : <span class="math inline">\(x^2 + x - 1
@@ -460,8 +473,8 @@ the names of the objects saved.</p>
 <pre class="r"><code>ls()</code></pre>
 <pre><code>## [1] &quot;a&quot;       &quot;b&quot;       &quot;c&quot;       &quot;murders&quot;</code></pre>
 </div>
-<div id="functions" class="section level3">
-<h3>Functions</h3>
+<div id="functions" class="section level3" number="1.2.2">
+<h3><span class="header-section-number">1.2.2</span> Functions</h3>
 <blockquote>
 <p>“R includes several predefined functions and most of the analysis
 pipelines we construct make extensive use of these. There are many more
@@ -479,8 +492,8 @@ object to the argument of the function log.”</p>
 <pre><code>## [1] 2.079442</code></pre>
 <pre class="r"><code>log(a) #a was already assigned to 1</code></pre>
 <pre><code>## [1] 0</code></pre>
-<div id="help" class="section level4">
-<h4>Help</h4>
+<div id="help" class="section level4" number="1.2.2.1">
+<h4><span class="header-section-number">1.2.2.1</span> Help</h4>
 <p>You can find out what the function expects and what it does by
 reviewing the very useful manuals included in R.</p>
 <pre class="r"><code>help(&quot;log&quot;)
@@ -506,10 +519,13 @@ shown in the help page:</p>
 <pre class="r"><code>log(8,2)</code></pre>
 <pre><code>## [1] 3</code></pre>
 </div>
-<div id="arithmetic-and-relational-operators" class="section level4">
-<h4>Arithmetic and relational operators</h4>
+<div id="arithmetic-and-relational-operators" class="section level4" number="1.2.2.2">
+<h4><span class="header-section-number">1.2.2.2</span> Arithmetic and
+relational operators</h4>
 <p>Arithmetic and relational operators are functions that didn’t need
-parentheses to be evaluated.</p>
+parentheses to be evaluated. Note: In R, operators like <code>+</code>,
+<code>*</code>, or <code>%%</code> are actually functions, so you can
+call <code>help(&quot;+&quot;)</code> just like any function.</p>
 <pre class="r"><code>5+3 
 5-1
 5*3
@@ -525,15 +541,154 @@ help(&quot;+&quot;) # Give a list of all arithmetic operator not only &quot;+&qu
 </code></pre>
 </div>
 </div>
-<div id="other-pre-built-objects" class="section level3">
-<h3>Other pre-built objects</h3>
+<div id="other-pre-built-objects" class="section level3" number="1.2.3">
+<h3><span class="header-section-number">1.2.3</span> Other pre-built
+objects</h3>
 <ul>
-<li>mathematical quantities such <span class="math inline">\(\pi\)</span> and <span class="math inline">\(\inf\)</span> :<code>pi</code>,
-<code>Inf</code></li>
+<li>Mathematical constants like <span class="math inline">\(\pi\)</span>
+and <span class="math inline">\(\infty\)</span> are represented as
+<code>pi</code> and <code>Inf</code> in R</li>
 <li>List all the available data sets : <code>data()</code> These data
 sets are objects that can be used by simply typing the name
 :<code>co2</code></li>
 </ul>
+<div id="sequence-generation" class="section level4" number="1.2.3.1">
+<h4><span class="header-section-number">1.2.3.1</span> Sequence
+Generation</h4>
+<p>Generate regular sequence</p>
+<pre class="r"><code>seq(0, 10)              # generates a sequence from 0 to 10 by 1</code></pre>
+<pre><code>##  [1]  0  1  2  3  4  5  6  7  8  9 10</code></pre>
+<pre class="r"><code>seq(0, 100, by = 10)    # from 0 to 100, incrementing by 10</code></pre>
+<pre><code>##  [1]   0  10  20  30  40  50  60  70  80  90 100</code></pre>
+<pre class="r"><code>seq(0, 1, length.out = 11) # generates 11 equally spaced numbers from 0 to 1</code></pre>
+<pre><code>##  [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0</code></pre>
+</div>
+<div id="sum" class="section level4" number="1.2.3.2">
+<h4><span class="header-section-number">1.2.3.2</span> Sum</h4>
+<p>The <code>sum()</code> function returns the total of all values
+present in its arguments.</p>
+<pre class="r"><code>x &lt;- 10
+y &lt;- seq(0,x,by =1)
+sum(y)</code></pre>
+<pre><code>## [1] 55</code></pre>
+<pre class="r"><code>sum(1:4) # pass a vector to sum and it will add the elements together</code></pre>
+<pre><code>## [1] 10</code></pre>
+</div>
+</div>
+</div>
+<div id="data-types" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> Data types</h2>
+<p>Variables in R can be of different types.The function class helps us
+determine what type of object we have:</p>
+<pre class="r"><code>a &lt;- 4
+class(a) </code></pre>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<div id="data-frame" class="section level3" number="1.3.1">
+<h3><span class="header-section-number">1.3.1</span> Data Frame</h3>
+<blockquote>
+<p>The most common way of storing a dataset in R is in a data frame.
+Conceptually, we can think of a data frame as a table with rows
+representing observations and the different variables reported for each
+observation defining the columns. Data frames are particularly useful
+for datasets because we can combine <strong>different data types into
+one object</strong>.</p>
+</blockquote>
+<blockquote>
+<p>A large proportion of data analysis challenges start with data stored
+in a data frame. For example, we stored the data for our motivating
+example in a data frame. You can access this dataset by loading the
+dslabs library and loading the murders dataset using the data
+function:</p>
+</blockquote>
+<p>The <code>data()</code> function without arguments lists available
+datasets from currently loaded packages. To actually load a dataset, use
+it with the dataset name: <code>data(murders)</code></p>
+<pre class="r"><code>library(dslabs)
+data(murders) # load the dataset &quot;murders&quot; into the environments (memory) allowing to work directly with</code></pre>
+<pre class="r"><code>class(murders) # check if murders is indeed a data.frame</code></pre>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<div id="structure-of-an-object" class="section level4" number="1.3.1.1">
+<h4><span class="header-section-number">1.3.1.1</span> Structure of an
+object</h4>
+<p>The function <code>str</code> shows us the structure of an object
+:</p>
+<pre class="r"><code>str(murders)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    51 obs. of  5 variables:
+##  $ state     : chr  &quot;Alabama&quot; &quot;Alaska&quot; &quot;Arizona&quot; &quot;Arkansas&quot; ...
+##  $ abb       : chr  &quot;AL&quot; &quot;AK&quot; &quot;AZ&quot; &quot;AR&quot; ...
+##  $ region    : Factor w/ 4 levels &quot;Northeast&quot;,&quot;South&quot;,..: 2 4 4 2 4 4 1 2 2 2 ...
+##  $ population: num  4779736 710231 6392017 2915918 37253956 ...
+##  $ total     : num  135 19 232 93 1257 ...</code></pre>
+<pre class="r"><code>library(dplyr)
+glimpse(murders) # For compact data view </code></pre>
+<pre><code>## Rows: 51
+## Columns: 5
+## $ state      &lt;chr&gt; &quot;Alabama&quot;, &quot;Alaska&quot;, &quot;Arizona&quot;, &quot;Arkansas&quot;, &quot;California&quot;, &quot;…
+## $ abb        &lt;chr&gt; &quot;AL&quot;, &quot;AK&quot;, &quot;AZ&quot;, &quot;AR&quot;, &quot;CA&quot;, &quot;CO&quot;, &quot;CT&quot;, &quot;DE&quot;, &quot;DC&quot;, &quot;FL&quot;,…
+## $ region     &lt;fct&gt; South, West, West, South, West, West, Northeast, South, Sou…
+## $ population &lt;dbl&gt; 4779736, 710231, 6392017, 2915918, 37253956, 5029196, 35740…
+## $ total      &lt;dbl&gt; 135, 19, 232, 93, 1257, 65, 97, 38, 99, 669, 376, 7, 12, 36…</code></pre>
+<p>We can see that murders is a <code>data.frame</code> with 51
+observations of 5 variables : - <code>$state</code>: a character
+variable like “Alabama” - <code>$abb</code> : character variable as the
+abbreviation of the state name - <code>$region</code> : factor, useful
+to store categorical data and more efficient than storing characters -
+<code>$population</code> and <code>$total</code> are numeric data</p>
+</div>
+<div id="the-accessor" class="section level4" number="1.3.1.2">
+<h4><span class="header-section-number">1.3.1.2</span> The accessor :
+$</h4>
+<p>For our analysis, we will need to access the different variables
+represented by columns included in this data frame. To do this, we use
+the accessor operator <code>$</code></p>
+<pre class="r"><code># Showing the first 6 lines of the dataset
+head(murders)</code></pre>
+<pre><code>##        state abb region population total
+## 1    Alabama  AL  South    4779736   135
+## 2     Alaska  AK   West     710231    19
+## 3    Arizona  AZ   West    6392017   232
+## 4   Arkansas  AR  South    2915918    93
+## 5 California  CA   West   37253956  1257
+## 6   Colorado  CO   West    5029196    65</code></pre>
+<pre class="r"><code># Using the accessor operator to obtain the population column
+murders$state</code></pre>
+<pre><code>##  [1] &quot;Alabama&quot;              &quot;Alaska&quot;               &quot;Arizona&quot;             
+##  [4] &quot;Arkansas&quot;             &quot;California&quot;           &quot;Colorado&quot;            
+##  [7] &quot;Connecticut&quot;          &quot;Delaware&quot;             &quot;District of Columbia&quot;
+## [10] &quot;Florida&quot;              &quot;Georgia&quot;              &quot;Hawaii&quot;              
+## [13] &quot;Idaho&quot;                &quot;Illinois&quot;             &quot;Indiana&quot;             
+## [16] &quot;Iowa&quot;                 &quot;Kansas&quot;               &quot;Kentucky&quot;            
+## [19] &quot;Louisiana&quot;            &quot;Maine&quot;                &quot;Maryland&quot;            
+## [22] &quot;Massachusetts&quot;        &quot;Michigan&quot;             &quot;Minnesota&quot;           
+## [25] &quot;Mississippi&quot;          &quot;Missouri&quot;             &quot;Montana&quot;             
+## [28] &quot;Nebraska&quot;             &quot;Nevada&quot;               &quot;New Hampshire&quot;       
+## [31] &quot;New Jersey&quot;           &quot;New Mexico&quot;           &quot;New York&quot;            
+## [34] &quot;North Carolina&quot;       &quot;North Dakota&quot;         &quot;Ohio&quot;                
+## [37] &quot;Oklahoma&quot;             &quot;Oregon&quot;               &quot;Pennsylvania&quot;        
+## [40] &quot;Rhode Island&quot;         &quot;South Carolina&quot;       &quot;South Dakota&quot;        
+## [43] &quot;Tennessee&quot;            &quot;Texas&quot;                &quot;Utah&quot;                
+## [46] &quot;Vermont&quot;              &quot;Virginia&quot;             &quot;Washington&quot;          
+## [49] &quot;West Virginia&quot;        &quot;Wisconsin&quot;            &quot;Wyoming&quot;</code></pre>
+<pre class="r"><code># Determining how many entries are in a vector 
+pop &lt;- murders$population
+length(pop)</code></pre>
+<pre><code>## [1] 51</code></pre>
+<pre class="r"><code># Factors are another type of class : 
+class(murders$region)</code></pre>
+<pre><code>## [1] &quot;factor&quot;</code></pre>
+<pre class="r"><code>levels(murders$region)</code></pre>
+<pre><code>## [1] &quot;Northeast&quot;     &quot;South&quot;         &quot;North Central&quot; &quot;West&quot;</code></pre>
+</div>
+<div id="vectors-numerics-characters-and-logical" class="section level4" number="1.3.1.3">
+<h4><span class="header-section-number">1.3.1.3</span> Vectors:
+numerics, characters and logical</h4>
+<p>The object <code>murder$population</code> is not one number but
+several, it is a numeric vector of length 51. To store character
+strings, vectors can also be of class character. For example, the state
+names are characters:</p>
+<pre class="r"><code>class(murders$state)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+</div>
 </div>
 </div>
 </div>
