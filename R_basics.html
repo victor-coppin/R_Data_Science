@@ -357,7 +357,8 @@ display: none;
 </div>
 
 
-<p>#Introduction</p>
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
 <p>R was developed by statisticians as an interactive environment for
 data analysis<br />
 <a href="historyofS.pdf">Click here to read the History of R
@@ -366,8 +367,24 @@ data analysis<br />
 macOS, UNIX/Linux - Scripts and data objects can be shared seamlessly
 across platforms - Active community : <a href="https://stats.stackexchange.com/questions/138/free-resources-for-learning-r">Free
 resources for learning R</a></p>
-<div id="installation-and-packages" class="section level1">
-<h1>Installation and packages</h1>
+<div id="installation-and-packages" class="section level2">
+<h2>Installation and packages</h2>
+<div id="scripts-and-markdown" class="section level3">
+<h3>Scripts and Markdown</h3>
+<ul>
+<li><strong>Create a new Script (.R)</strong>:
+<code>Ctrl + Shift + N</code><br />
+</li>
+<li><strong>Save a Script or R Markdown file</strong>:
+<code>Ctrl + S</code></li>
+</ul>
+<p>###Packages To install packages inside the Console :</p>
+<pre class="r"><code>install.packages(&quot;ggplot2&quot;) # install the ggplot2 library
+install.packages(&quot;dslab&quot;) # install the the Harvard dslab R package
+installed.packages()[,&quot;Packages&quot;] #list all installed packages
+&quot;ggplot2&quot; %in% rownames(installed.packages()) #return true if a package i already installed.</code></pre>
+</div>
+</div>
 </div>
 
 

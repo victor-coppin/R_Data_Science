@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-#Introduction
+# Introduction
 
 R was developed by statisticians as an interactive environment for data analysis   
 [Click here to read the History of R (PDF)](historyofS.pdf)  
@@ -18,4 +18,18 @@ R was developed by statisticians as an interactive environment for data analysis
 - Scripts and data objects can be shared seamlessly across platforms
 - Active community : [Free resources for learning R](https://stats.stackexchange.com/questions/138/free-resources-for-learning-r) 
 
-# Installation and packages 
+## Installation and packages 
+### Scripts and Markdown
+
+- **Create a new Script (.R)**: `Ctrl + Shift + N`  
+- **Save a Script or R Markdown file**: `Ctrl + S`
+
+###Packages 
+To install packages inside the Console :  
+
+```r
+install.packages("ggplot2") # install the ggplot2 library
+install.packages("dslab") # install the the Harvard dslab R package
+installed.packages()[,"Packages"] #list all installed packages
+"ggplot2" %in% rownames(installed.packages()) #return true if a package i already installed.
+```
