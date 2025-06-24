@@ -168,5 +168,52 @@ help("+") # Give a list of all arithmetic operator not only "+"
 - List all the available data sets : `data()`
   These data sets are objects that can be used by simply typing the name :`co2`
 
+#### Sequence Generation
 
+Generate regular sequence
+```{r}
+
+seq(0, 10)              # generates a sequence from 0 to 10 by 1
+seq(0, 100, by = 10)    # from 0 to 100, incrementing by 10
+seq(0, 1, length.out = 11) # generates 11 equally spaced numbers from 0 to 1
+```
+
+#### Sum
+
+The sum of vector elements returns the sum of all the values presents in its arguments
+
+
+```{r}
+x <- 10
+y <- seq(0,x,by =1)
+sum(y)
+```
+
+```{r}
+sum(1:4) # pass a vector to sum and it will add the elements together
+```
+
+
+## Data types
+
+Variables in R can be of different types.The function class helps us determine what type of object we have:
+```{r}
+a <- 4
+class(a) 
+```
+
+### Data Frame
+
+>The most common way of storing a dataset in R is in a data frame. Conceptually, we can think of a data frame as a table with rows representing observations and the different variables reported for each observation defining the columns. Data frames are particularly useful for datasets because we can combine different data types into one object.
+
+>A large proportion of data analysis challenges start with data stored in a data frame. For example, we stored the data for our motivating example in a data frame. You can access this dataset by loading the dslabs library and loading the murders dataset using the data function:
+
+```{r, message=FALSE,warning=FALSE}
+library(dslabs)
+data(murders) # load the dataset "murders" into the environments (memory) allowing to work directly with
+```
+
+```{r}
+class(murders) 
+```
 
