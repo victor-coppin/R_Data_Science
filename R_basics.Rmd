@@ -10,7 +10,12 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 #Introduction
-R was developed by statisticians as an interactive environment for data analysis 
-[Click here to read the History of R (PDF)](historyofS.pdf)
+
+R was developed by statisticians as an interactive environment for data analysis   
+[Click here to read the History of R (PDF)](historyofS.pdf)  
+- R is free and open source
+- It runs on all major platforms : Windows, macOS, UNIX/Linux
+- Scripts and data objects can be shared seamlessly across platforms
+- Active community : [Free resources for learning R](https://stats.stackexchange.com/questions/138/free-resources-for-learning-r) 
 
 # Installation and packages 
