@@ -361,8 +361,13 @@ display: none;
 <li><a href="#introduction" id="toc-introduction"><span class="toc-section-number">1</span> Introduction</a>
 <ul>
 <li><a href="#installation-and-packages" id="toc-installation-and-packages"><span class="toc-section-number">1.1</span> Installation and packages</a></li>
-<li><a href="#objects" id="toc-objects"><span class="toc-section-number">1.2</span> Objects</a></li>
+<li><a href="#objects-variables-functions-and-data-types" id="toc-objects-variables-functions-and-data-types"><span class="toc-section-number">1.2</span> Objects: Variables, Functions, and
+Data Types</a></li>
 <li><a href="#data-types" id="toc-data-types"><span class="toc-section-number">1.3</span> Data types</a></li>
+</ul></li>
+<li><a href="#vectors-and-sorting" id="toc-vectors-and-sorting"><span class="toc-section-number">2</span> Vectors and Sorting</a>
+<ul>
+<li><a href="#creating-vectors" id="toc-creating-vectors"><span class="toc-section-number">2.1</span> Creating vectors</a></li>
 </ul></li>
 </ul>
 </div>
@@ -440,8 +445,9 @@ murders %&gt;%
 </div>
 </div>
 </div>
-<div id="objects" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> Objects</h2>
+<div id="objects-variables-functions-and-data-types" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Objects: Variables,
+Functions, and Data Types</h2>
 <div id="variables" class="section level3" number="1.2.1">
 <h3><span class="header-section-number">1.2.1</span> Variables</h3>
 <p>To define a variable we may use the assignment symbol:
@@ -456,7 +462,7 @@ a &lt;- 1
 b &lt;- 1
 c &lt;- -1
 
-#solving the quadratic equation
+# solving the quadratic equation
 (-b +sqrt(b^2-4*a*c))/(2*a)</code></pre>
 <pre><code>## [1] 0.618034</code></pre>
 <pre class="r"><code>(-b -sqrt(b^2-4*a*c))/(2*a)</code></pre>
@@ -507,7 +513,7 @@ value is assigned with =. Defining these is optional. For example, the
 base of the function log defaults to base = exp(1) making log the
 natural log by default.”</p>
 </blockquote>
-<pre class="r"><code>args(log) #quick look at the argument without opening the help system</code></pre>
+<pre class="r"><code>args(log) # quick look at the argument without opening the help system</code></pre>
 <pre><code>## function (x, base = exp(1)) 
 ## NULL</code></pre>
 <p>If no argument name is used, R assume arguments are in the order
@@ -682,12 +688,186 @@ class(murders$region)</code></pre>
 <div id="vectors-numerics-characters-and-logical" class="section level4" number="1.3.1.3">
 <h4><span class="header-section-number">1.3.1.3</span> Vectors:
 numerics, characters and logical</h4>
-<p>The object <code>murder$population</code> is not one number but
+<p>The object <code>murders$population</code> is not one number but
 several, it is a numeric vector of length 51. To store character
 strings, vectors can also be of class character. For example, the state
-names are characters:</p>
+names are characters: <strong>Note</strong>: use quote to distinguish
+between variable name and character strings</p>
 <pre class="r"><code>class(murders$state)</code></pre>
 <pre><code>## [1] &quot;character&quot;</code></pre>
+<pre class="r"><code>#assign a character to a variable name
+a &lt;- 1
+a &lt;- &quot;a&quot;
+a</code></pre>
+<pre><code>## [1] &quot;a&quot;</code></pre>
+<p>Logical vectors : TRUE/FALSE</p>
+<pre class="r"><code>z &lt;- 3 == 2 # == is a relational operator, asking if 3 is equal to 2
+z</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>class(z)</code></pre>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+</div>
+<div id="factors" class="section level4" number="1.3.1.4">
+<h4><span class="header-section-number">1.3.1.4</span> Factors</h4>
+<p>We saw that in the murders data set, region is a factor of 4
+levels.</p>
+<pre class="r"><code>levels(murders$region) </code></pre>
+<pre><code>## [1] &quot;Northeast&quot;     &quot;South&quot;         &quot;North Central&quot; &quot;West&quot;</code></pre>
+<blockquote>
+<p>In the background, R stores these levels as integers and keeps a map
+to keep track of the labels. This is more memory efficient than storing
+all the characters. Note that the levels have an order that is different
+from the order of appearance in the factor object. The default is for
+the levels to follow alphabetical order. However, often we want the
+levels to follow a different order. The function reorder lets us change
+the order of the levels of a factor variable based on a summary computed
+on a numeric vector.</p>
+</blockquote>
+<p><strong>Reorder the levels of the region by the total number of
+murders rather than the alphabetical order</strong>:</p>
+<pre class="r"><code>region &lt;- murders$region
+value &lt;- murders$total 
+region &lt;- reorder(region,value, FUN = sum)
+levels(region)</code></pre>
+<pre><code>## [1] &quot;Northeast&quot;     &quot;North Central&quot; &quot;West&quot;          &quot;South&quot;</code></pre>
+</div>
+<div id="key-points-about-data-frame" class="section level4" number="1.3.1.5">
+<h4><span class="header-section-number">1.3.1.5</span> Key Points about
+data frame :</h4>
+<ul>
+<li>Data frames can be thought of as tables with rows representing
+observations and columns representing different variables.</li>
+<li>To access data from columns of a data frame, we use the dollar sign
+symbol, $, which is called the accessor.</li>
+<li>Data frames are a kind of lists : both can store different types of
+data (numeric, character,<em>etc.</em>), they both have named components
+and can be parsed/access with <code>$</code>, <code>[[]]</code> or
+<code>[]</code>. But Data frames is a special kind of list where : every
+components must be a vector of the same length, it is interpreted as a
+2D table like a spreadsheet (rows x columns)</li>
+</ul>
+<div style="border:2px solid #cc0000; padding:10px; font-weight:bold; background:#fdfdfd;">
+<p>The order of the entries in the list <code>murders$population</code>
+preserves the order of the rows in our data table.</p>
+</div>
+<p>This means that each element in the vector correspond exactly to the
+same row in the original dataframe : - <code>murders$state[1]</code> is
+Alabama - <code>murders$population[1]</code> is the population of
+Alabama The index <code>1</code> in each column matches the first row of
+the table and that pattern continues for every row, which allows to
+manipulate or compare columns position by position.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="vectors-and-sorting" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Vectors and
+Sorting</h1>
+<blockquote>
+<p>In R, the most basic objects available to store data are vectors. As
+we have seen, complex datasets can usually be broken down into
+components that are vectors. For example, in a data frame, each column
+is a vector.</p>
+</blockquote>
+<div id="creating-vectors" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Creating vectors</h2>
+<p>We can create vectors using the function <code>c</code>, which stands
+for <em>concatenate</em> :</p>
+<pre class="r"><code>codes &lt;- c(380,124,818)
+codes</code></pre>
+<pre><code>## [1] 380 124 818</code></pre>
+<p>We can also create character vectors. We use the quotes to denote
+that the entries are characters rather than variable names.</p>
+<pre class="r"><code>countries &lt;- c(&quot;Italy&quot;,&quot;Canada&quot;,&quot;Egypt&quot;) # We can also use single quotes &#39;Italy&#39;
+countries</code></pre>
+<pre><code>## [1] &quot;Italy&quot;  &quot;Canada&quot; &quot;Egypt&quot;</code></pre>
+<div id="sequences" class="section level3" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Sequences</h3>
+<p>Another useful function for creating vectors generates sequences:</p>
+<pre class="r"><code>seq(1,10)</code></pre>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<pre class="r"><code>1:10 # if we want consecutive integers we can use this shorthand </code></pre>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<p><em>Note</em>: When we use these functions, R produces integers, not
+numeric, because they are typically used to index</p>
+</div>
+<div id="subsetting-access-data" class="section level3" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Subsetting : access
+data</h3>
+<p>We use square brackets to access specific elements of a vector.</p>
+<pre class="r"><code>codes &lt;- c(&quot;Cannes&quot;=06400 ,&quot;Laon&quot;= 02000, &quot;Reims&quot;= 51100, &quot;Versailles&quot; = 78000)
+codes[2] # Access to the second index : Laon 2000</code></pre>
+<pre><code>## Laon 
+## 2000</code></pre>
+<pre class="r"><code>codes[c(1,2)] # Access the 2 first elements</code></pre>
+<pre><code>## Cannes   Laon 
+##   6400   2000</code></pre>
+<p>If the elements have names, we can also access the entries using
+these names.</p>
+<pre class="r"><code>codes[&quot;Laon&quot;]</code></pre>
+<pre><code>## Laon 
+## 2000</code></pre>
+</div>
+<div id="coercion" class="section level3" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> Coercion</h3>
+<blockquote>
+<p>In general, coercion is an attempt by R to be flexible with data
+types. When an entry does not match the expected, some of the prebuilt R
+functions try to guess what was meant before throwing an error. This can
+also lead to confusion. Failing to understand coercion can drive
+programmers crazy when attempting to code in R since it behaves quite
+differently from most other languages in this regard. Let’s learn about
+it with some examples. We said that vectors must be all of the same
+type. So if we try to combine, say, numbers and characters, you might
+expect an error:</p>
+</blockquote>
+<pre class="r"><code>x &lt;- c(1,&quot;Canada&quot;,3) </code></pre>
+<p>We don’t get, any error, neither warning : <strong>R coerced the data
+into characters</strong></p>
+<pre class="r"><code>class(x)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p>R also offers functions to change from one type to another.</p>
+<pre class="r"><code>x &lt;- 1:5
+y &lt;- as.character(x) # Turn numbers into characters
+y</code></pre>
+<pre><code>## [1] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; &quot;5&quot;</code></pre>
+<pre class="r"><code>z &lt;- as.numeric(y) # Turn it back to numeric
+z</code></pre>
+<pre><code>## [1] 1 2 3 4 5</code></pre>
+<p>When a function tries to coerce one type to another and encounters an
+impossible case, it usually gives us a warning and turns the entry into
+a special value called an NA for “not available”. For example:</p>
+<pre class="r"><code>x &lt;- c(&quot;1&quot;,&quot;b&quot;,&quot;3&quot;)
+as.numeric(x)</code></pre>
+<pre><code>## Warning: NAs introduits lors de la conversion automatique</code></pre>
+<pre><code>## [1]  1 NA  3</code></pre>
+<div id="exercise" class="section level4" number="2.1.3.1">
+<h4><span class="header-section-number">2.1.3.1</span> Exercise</h4>
+<ol style="list-style-type: decimal">
+<li>Use the function c to create a vector with the average high
+temperatures in January for Beijing, Lagos, Paris, Rio de Janeiro, San
+Juan, and Toronto, which are 35, 88, 42, 84, 81, and 30 degrees
+Fahrenheit. Call the object temp.</li>
+<li>Now create a vector with the city names and call the object
+city.<br />
+</li>
+<li>Use the names function and the objects defined in the previous
+exercises to associate the temperature data with its corresponding
+city.</li>
+<li>Use the [ and : operators to access the temperature of the first
+three cities on the list.</li>
+<li>Use the [ operator to access the temperature of Paris and San
+Juan.</li>
+<li>Use the : operator to create a sequence of numbers
+12,13,14,…,73.</li>
+<li>Create a vector containing all the positive odd numbers smaller than
+100.</li>
+<li>Create a vector of numbers that starts at 6, does not pass 55, and
+adds numbers in increments of 4/7: 6, 6 + 4/7, 6 + 8/7, and so on. How
+many numbers does the list have? Hint: use seq and length.</li>
+<li>What is the class of the following object a &lt;- seq(1, 10, 0.5)?
+10. What is the class of the following object a &lt;- seq(1, 10)?</li>
+</ol>
 </div>
 </div>
 </div>

@@ -76,9 +76,9 @@ murders %>%
   geom_label()
 
 ```
-# R Basics
+# R Basics  
 
-## Objects
+## Objects: Variables, Functions, and Data Types
 
 ### Variables 
 To define a variable we may use the assignment symbol: `<-`  
@@ -96,7 +96,7 @@ a <- 1
 b <- 1
 c <- -1
 
-#solving the quadratic equation
+# solving the quadratic equation
 (-b +sqrt(b^2-4*a*c))/(2*a)
 (-b -sqrt(b^2-4*a*c))/(2*a)
 
@@ -134,7 +134,7 @@ help("log")
 >"The help page will show you what arguments the function is expecting. For example, log needs x and base to run. However, some arguments are required and others are optional. You can determine which arguments are optional by noting in the help document that a default value is assigned with =. Defining these is optional. For example, the base of the function log defaults to base = exp(1) making log the natural log by default."
 
 ```{r}
-args(log) #quick look at the argument without opening the help system
+args(log) # quick look at the argument without opening the help system
 ```
 
 If no argument name is used, R assume arguments are in the order shown in the help page: 
@@ -266,11 +266,17 @@ levels(murders$region)
 
 #### Vectors: numerics, characters and logical
 
-The object `murder$population` is not one number but several, it is a numeric vector of length 51.
+The object `murders$population` is not one number but several, it is a numeric vector of length 51.
 To store character strings, vectors can also be of class character. For example, the state names are characters:
+**Note**: use quote to distinguish between variable name and character strings
 
 ```{r}
 class(murders$state)
+
+#assign a character to a variable name
+a <- 1
+a <- "a"
+a
 ```
 
 Logical vectors : TRUE/FALSE
@@ -300,4 +306,136 @@ region <- reorder(region,value, FUN = sum)
 levels(region)
 ```
 
+
+#### Key Points about data frame : 
+
+- Data frames can be thought of as tables with rows representing observations and columns representing different variables.
+- To access data from columns of a data frame, we use the dollar sign symbol, $, which is called the accessor.
+- Data frames are a kind of lists : both can store different types of data (numeric, character,*etc.*), they both have named components and can be parsed/access with `$`, `[[]]` or `[]`.
+But Data frames is a special kind of list where : every components must be a vector of the same length, it is interpreted as a 2D table like a spreadsheet (rows x columns)
+
+<div style="border:2px solid #cc0000; padding:10px; font-weight:bold; background:#fdfdfd;">
+The order of the entries in the list `murders$population` preserves the order of the rows in our data table.
+</div>
+
+This means that each element in the vector correspond exactly to the same row in the original dataframe : 
+- `murders$state[1]` is Alabama
+- `murders$population[1]` is the population of Alabama
+The index `1` in each column matches the first row of the table and that pattern continues for every row, which allows to manipulate or compare columns position by position.
+
+
+# Vectors and Sorting
+
+>In R, the most basic objects available to store data are vectors. As we have seen, complex datasets can usually be broken down into components that are vectors. For example, in a data frame, each column is a vector.
+
+## Creating vectors
+
+We can create vectors using the function `c`, which stands for *concatenate* :
+```{r}
+codes <- c(380,124,818)
+codes
+```
+
+We can also create character vectors. We use the quotes to denote that the entries are characters rather than variable names.
+```{r}
+countries <- c("Italy","Canada","Egypt") # We can also use single quotes 'Italy'
+countries
+```
+
+### Sequences
+Another useful function for creating vectors generates sequences:
+```{r}
+seq(1,10)
+1:10 # if we want consecutive integers we can use this shorthand 
+```
+
+*Note*: When we use these functions, R produces integers, not numeric, because they are typically used to index
+
+### Subsetting : access data
+
+We use square brackets to access specific elements of a vector. 
+```{r}
+codes <- c("Cannes"=06400 ,"Laon"= 02000, "Reims"= 51100, "Versailles" = 78000)
+codes[2] # Access to the second index : Laon 2000
+codes[c(1,2)] # Access the 2 first elements
+```
+
+If the elements have names, we can also access the entries using these names.
+```{r}
+codes["Laon"]
+```
+
+### Coercion
+
+>In general, coercion is an attempt by R to be flexible with data types. When an entry does not match the expected, some of the prebuilt R functions try to guess what was meant before throwing an error. This can also lead to confusion. Failing to understand coercion can drive programmers crazy when attempting to code in R since it behaves quite differently from most other languages in this regard. Let’s learn about it with some examples. We said that vectors must be all of the same type. So if we try to combine, say, numbers and characters, you might expect an error:
+
+
+```{r}
+x <- c(1,"Canada",3) 
+```
+
+We don't get, any error, neither warning : **R coerced the data into characters**
+```{r}
+class(x)
+```
+ 
+R also offers functions to change from one type to another.
+```{r}
+x <- 1:5
+y <- as.character(x) # Turn numbers into characters
+y
+z <- as.numeric(y) # Turn it back to numeric
+z
+```
+
+When a function tries to coerce one type to another and encounters an impossible case, it usually gives us a warning and turns the entry into a special value called an NA for “not available”. For example:
+
+```{r}
+x <- c("1","b","3")
+as.numeric(x)
+```
+
+#### Exercise
+
+1. Use the function `c()` to create a vector with the average high temperatures in January for Beijing, Lagos, Paris, Rio de Janeiro, San Juan, and Toronto, which are 35, 88, 42, 84, 81, and 30 degrees Fahrenheit. Call the object `temp`.  
+2. Now create a vector with the city names and call the object `city`.  
+3. Use the `names()` function and the objects defined in the previous exercises to associate the temperature data with its corresponding city.  
+4. Use the `[` and `:` operators to access the temperature of the first three cities on the list.  
+5. Use the `[` operator to access the temperature of Paris and San Juan.  
+6. Use the `:` operator to create a sequence of numbers 12,13,14,...,73.  
+7. Create a vector containing all the positive odd numbers smaller than 100.  
+8. Create a vector of numbers that starts at 6, does not pass 55, and adds numbers in increments of 4/7: 6, 6 + 4/7, 6 + 8/7, and so on. How many numbers does the list have? (Hint: use `seq()` and `length()`)  
+9. What is the class of the following object `a <- seq(1, 10, 0.5)`?  
+10. What is the class of the following object `a <- seq(1, 10)`
+
+
+```{r}
+# 1 & 2: Create vectors
+temp <- c(35,88,42,84,81,30)
+city <- c("Beijing","Lagos","Paris","Rio de Janeiro","San Juan", "Toronto")
+# 3: Assign the city names to the temp vector
+names(temp) <- city 
+# 4: Access the temperature of the first 3 cities (indexing starts at 1 in R)
+temp[1:3] # NOT temp[0:3] — index 0 does nothing in R
+
+# 5: Access the temperature of Paris and San Juan
+temp[c("Paris","San Juan")]
+
+# 6: Sequence from 12 to 73
+12:73
+
+# 7: Positive odd numbers < 100
+seq(1,100,by=2)
+
+# 8: Create a sequence starting at 6, going up in steps of 4/7 until ≤ 55
+increment <- seq(6,55, by=4/7)
+length(increment)
+
+# 9: Class of a <- seq(1, 10, 0.5)
+a <-seq(1,10,0.5)
+class(a)
+# 10: Class of a <- seq(1, 10)
+a <-seq(1,10)
+class(a)
+```
 
