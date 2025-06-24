@@ -1,0 +1,16 @@
+---
+title: "Introduction to Data Science"
+author: "Victor Coppin"
+date: "2025-06-24"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Introduction
+R was developed by statisticians as an interactive environment for data analysis 
+[Click here to read the History of R (PDF)](historyofS.pdf)
+
+# Installation and packages 
