@@ -359,6 +359,8 @@ display: none;
 
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
+<p>This file follows the course <a href="Introduction%20to%20Data%20Science.pdf"><em>Introduction to Data
+Science by Rafael A. Irizarry</em></a></p>
 <p>R was developed by statisticians as an interactive environment for
 data analysis<br />
 <a href="historyofS.pdf">Click here to read the History of R
@@ -378,13 +380,35 @@ resources for learning R</a></p>
 <li><strong>Save a Script or R Markdown file</strong>:
 <code>Ctrl + S</code></li>
 </ul>
-<p>###Packages To install packages inside the Console :</p>
+</div>
+<div id="packages" class="section level3">
+<h3>Packages</h3>
+<p>To install packages, inside the Console :</p>
 <pre class="r"><code>install.packages(&quot;ggplot2&quot;) # install the ggplot2 library
 install.packages(&quot;dslab&quot;) # install the the Harvard dslab R package
 installed.packages()[,&quot;Packages&quot;] #list all installed packages
 &quot;ggplot2&quot; %in% rownames(installed.packages()) #return true if a package i already installed.</code></pre>
+<p>Note: “We recommend installing packages through RStudio, rather than
+through R, and the code provided works in both R and RStudio. Once a
+package has been installed, it is technically added onto R (even if you
+use RStudio to install it), which is why packages must be re-installed
+when R is updated. However, since we use R through RStudio, any packages
+that are installed can be used in both R and RStudio, regardless of
+which one was used to install the packages”<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>Load a package into the R session Note :<br />
+- to create a chunk code block : <code>Ctrl + Alt + I</code> - to run a
+chunk : <code>Ctrl + Shift + Enter</code></p>
+<pre class="r"><code>library(dslabs)</code></pre>
+<pre><code>## Warning: le package &#39;dslabs&#39; a été compilé avec la version R 4.4.3</code></pre>
 </div>
 </div>
+</div>
+<div class="footnotes footnotes-end-of-document">
+<hr />
+<ol>
+<li id="fn1"><p>Source: <em>Introduction to Data Science</em> by Rafael
+A. Irizarry<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
 
 

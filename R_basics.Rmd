@@ -11,6 +11,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Introduction
 
+This file follows the course [*Introduction to Data Science by Rafael A. Irizarry*](Introduction%20to%20Data%20Science.pdf)
+
 R was developed by statisticians as an interactive environment for data analysis   
 [Click here to read the History of R (PDF)](historyofS.pdf)  
 - R is free and open source
@@ -24,8 +26,9 @@ R was developed by statisticians as an interactive environment for data analysis
 - **Create a new Script (.R)**: `Ctrl + Shift + N`  
 - **Save a Script or R Markdown file**: `Ctrl + S`
 
-###Packages 
-To install packages inside the Console :  
+### Packages 
+
+To install packages, inside the Console :  
 
 ```r
 install.packages("ggplot2") # install the ggplot2 library
@@ -33,3 +36,16 @@ install.packages("dslab") # install the the Harvard dslab R package
 installed.packages()[,"Packages"] #list all installed packages
 "ggplot2" %in% rownames(installed.packages()) #return true if a package i already installed.
 ```
+
+Note: 
+"We recommend installing packages through RStudio, rather than through R, and the code provided works in both R and RStudio. Once a package has been installed, it is technically added onto R (even if you use RStudio to install it), which is why packages must be re-installed when R is updated. However, since we use R through RStudio, any packages that are installed can be used in both R and RStudio, regardless of which one was used to install the packages"^[Source: *Introduction to Data Science* by Rafael A. Irizarry]
+
+Load a package into the R session 
+Note :  
+- to create a chunk code block  : `Ctrl + Alt + I`
+- to run a chunk : `Ctrl + Shift + Enter`
+- Hides messages (*i.e.* from library calls) : `{r, message=FALSE}`
+```{r, message=FALSE}
+library(dslabs)
+```
+
