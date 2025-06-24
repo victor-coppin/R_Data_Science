@@ -21,6 +21,7 @@ R was developed by statisticians as an interactive environment for data analysis
 - Active community : [Free resources for learning R](https://stats.stackexchange.com/questions/138/free-resources-for-learning-r) 
 
 ## Installation and packages 
+
 ### Scripts and Markdown
 
 - **Create a new Script (.R)**: `Ctrl + Shift + N`  
@@ -32,9 +33,11 @@ To install packages, inside the Console :
 
 ```r
 install.packages("ggplot2") # install the ggplot2 library
-install.packages("dslab") # install the the Harvard dslab R package
+install.packages("dslabs") # install the Harvard dslabs R package
 installed.packages()[,"Packages"] #list all installed packages
-"ggplot2" %in% rownames(installed.packages()) #return true if a package i already installed.
+install.packages("tidyverse", dependencies = TRUE) # tells R to install the other things that are necessary for the package or packages to run smoothly. 
+install.packages(c("tidyverse", "dslabs")） # to install two packages at the same time
+"ggplot2" %in% rownames(installed.packages()) # return TRUE if a package is already installed.
 ```
 
 Note: 
@@ -48,4 +51,62 @@ Note :
 ```{r, message=FALSE}
 library(dslabs)
 ```
+
+### Running commands
+
+#### shortcuts: 
+
+- **Run an entire script**: `Ctrl+S`
+- **Run a single line of script**: `Ctrl+Enter` while the cursor is pointing to that specific line.
+
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(dslabs)
+data(murders)
+
+murders %>%
+  ggplot(aes(population,total, label=abb, color=region ))+
+  geom_label()
+
+```
+# R Basics
+
+## Objects
+
+### Variables 
+To define a variable we may use the assignment symbol: `<-`  
+
+
+Code to solve the equation : $x^2 + x - 1 = 0$
+The quadratic formula gives us the solutions :
+$$
+\dfrac{-b-\sqrt{b^2-4ac}}{2a} \quad \text{and} \quad \dfrac{-b+\sqrt{b^2-4ac}}{2a} 
+$$
+
+```{r}
+# assigning values to the variables
+a <- 1
+b <- 1
+c <- -1
+
+#solving the quadratic equation
+(-b +sqrt(b^2-4*a*c))/(2*a)
+(-b -sqrt(b^2-4*a*c))/(2*a)
+
+```
+
+To see the value stored in a variable we ask R to evaluate `a` or more explicitly to show us the value with the `print()` function  
+All the variables are saved in the workspace: `ls()` shows the names of the objects saved.
+
+```{r}
+a
+print(a)
+ls()
+```
+
+
+
+
+
+### Functions
 
