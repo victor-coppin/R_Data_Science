@@ -386,9 +386,9 @@ resources for learning R</a></p>
 <p>To install packages, inside the Console :</p>
 <pre class="r"><code>install.packages(&quot;ggplot2&quot;) # install the ggplot2 library
 install.packages(&quot;dslabs&quot;) # install the Harvard dslabs R package
-installed.packages()[,&quot;Packages&quot;] #list all installed packages
+installed.packages()[,&quot;Package&quot;] #list all installed packages
 install.packages(&quot;tidyverse&quot;, dependencies = TRUE) # tells R to install the other things that are necessary for the package or packages to run smoothly. 
-install.packages(c(&quot;tidyverse&quot;, &quot;dslabs&quot;)） # to install two packages at the same time
+install.packages(c(&quot;tidyverse&quot;, &quot;dslabs&quot;)) # to install two packages at the same time
 &quot;ggplot2&quot; %in% rownames(installed.packages()) # return TRUE if a package is already installed.</code></pre>
 <p>Note: “We recommend installing packages through RStudio, rather than
 through R, and the code provided works in both R and RStudio. Once a
@@ -396,7 +396,7 @@ package has been installed, it is technically added onto R (even if you
 use RStudio to install it), which is why packages must be re-installed
 when R is updated. However, since we use R through RStudio, any packages
 that are installed can be used in both R and RStudio, regardless of
-which one was used to install the packages”<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+which one was used to install the packages”<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
 <p>Load a package into the R session Note :<br />
 - to create a chunk code block : <code>Ctrl + Alt + I</code> - to run a
 chunk : <code>Ctrl + Shift + Enter</code> - Hides messages
@@ -409,7 +409,8 @@ chunk : <code>Ctrl + Shift + Enter</code> - Hides messages
 <div id="shortcuts" class="section level4">
 <h4>shortcuts:</h4>
 <ul>
-<li><strong>Run an entire script</strong>: <code>Ctrl+S</code></li>
+<li><strong>Run an entire script</strong>:
+<code>Ctrl + Shift + Enter</code></li>
 <li><strong>Run a single line of script</strong>:
 <code>Ctrl+Enter</code> while the cursor is pointing to that specific
 line.</li>
@@ -461,6 +462,78 @@ the names of the objects saved.</p>
 </div>
 <div id="functions" class="section level3">
 <h3>Functions</h3>
+<blockquote>
+<p>“R includes several predefined functions and most of the analysis
+pipelines we construct make extensive use of these. There are many more
+prebuilt functions and even more can be added through packages. These
+functions do not appear in the workspace because you did not define
+them, but they are available for immediate use. In general, <strong>we
+need to use parentheses</strong> to evaluate a function. If you type ls,
+the function is not evaluated and instead R shows you the code that
+defines the function. If you type ls() the function is evaluated and, as
+seen above, we see objects in the workspace. Unlike ls, most functions
+require one or more arguments. Below is an example of how we assign an
+object to the argument of the function log.”</p>
+</blockquote>
+<pre class="r"><code>log(8)</code></pre>
+<pre><code>## [1] 2.079442</code></pre>
+<pre class="r"><code>log(a) #a was already assigned to 1</code></pre>
+<pre><code>## [1] 0</code></pre>
+<div id="help" class="section level4">
+<h4>Help</h4>
+<p>You can find out what the function expects and what it does by
+reviewing the very useful manuals included in R.</p>
+<pre class="r"><code>help(&quot;log&quot;)
+?log # shorthand</code></pre>
+<blockquote>
+<p>“The help page will show you what arguments the function is
+expecting. For example, log needs x and base to run. However, some
+arguments are required and others are optional. You can determine which
+arguments are optional by noting in the help document that a default
+value is assigned with =. Defining these is optional. For example, the
+base of the function log defaults to base = exp(1) making log the
+natural log by default.”</p>
+</blockquote>
+<pre class="r"><code>args(log) #quick look at the argument without opening the help system</code></pre>
+<pre><code>## function (x, base = exp(1)) 
+## NULL</code></pre>
+<p>If no argument name is used, R assume arguments are in the order
+shown in the help page:</p>
+<pre class="r"><code>log(x=8,base=2)</code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre class="r"><code>log(base=2, x=8) # if using arguments&#39; names, we can include them in whatever order we want. </code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre class="r"><code>log(8,2)</code></pre>
+<pre><code>## [1] 3</code></pre>
+</div>
+<div id="arithmetic-and-relational-operators" class="section level4">
+<h4>Arithmetic and relational operators</h4>
+<p>Arithmetic and relational operators are functions that didn’t need
+parentheses to be evaluated.</p>
+<pre class="r"><code>5+3 
+5-1
+5*3
+10/2
+2**2  # Exponentiation
+2^3   # Exponentiation
+5%%2  # Modulo 
+5%/%5 # Integer division
+
+# Help for operators
+help(&quot;+&quot;) # Give a list of all arithmetic operator not only &quot;+&quot;  
+?&quot;&gt;&quot;      # Help for all relational operators
+</code></pre>
+</div>
+</div>
+<div id="other-pre-built-objects" class="section level3">
+<h3>Other pre-built objects</h3>
+<ul>
+<li>mathematical quantities such <span class="math inline">\(\pi\)</span> and <span class="math inline">\(\inf\)</span> :<code>pi</code>,
+<code>Inf</code></li>
+<li>List all the available data sets : <code>data()</code> These data
+sets are objects that can be used by simply typing the name
+:<code>co2</code></li>
+</ul>
 </div>
 </div>
 </div>
