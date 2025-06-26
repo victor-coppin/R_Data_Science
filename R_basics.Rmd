@@ -25,6 +25,7 @@ R was developed by statisticians as an interactive environment for data analysis
 - Scripts and data objects can be shared seamlessly across platforms
 - Active community : [Free resources for learning R](https://stats.stackexchange.com/questions/138/free-resources-for-learning-r) 
 
+
 ## Installation and packages 
 
 ### Scripts and Markdown
@@ -76,7 +77,24 @@ murders %>%
   geom_label()
 
 ```
+
 # R Basics  
+
+**CASE STUDY : US murder rates by state** 
+
+>"*Imagine you live in Europe and are offered a job in a US company with many locations
+across all states.It is a great job, but news with headlines such as "US Gun Homicide
+Rate Higher Than Other Developed Countries" have you worried.
+But then you remember that the US is a large and diverse country with 50 very different
+states as well as the District of Columbia (DC).
+California, for example, has a larger population than Canada, and 20 US states have populations
+larger than that of Norway. In some respects, the variability across states in the US
+is akin to the variability across countries in Europe. Furthermore, although not included in
+the charts above, the murder rates in Lithuania, Ukraine, and Russia are higher than 4 per
+100,000. So perhaps the news reports that worried you are too superficial. You have options
+of where to live and want to determine the safety of each particular state. We will gain some
+insights by examining data related to gun homicides in the US during 2010 using R.*"
+
 
 ## Objects: Variables, Functions, and Data Types
 
@@ -517,6 +535,18 @@ In the table below, we observe that:
 
 - `rank()` returns the rank (position in the sorted vector) of each value in x. For example, in the first row, the value 3 means that x[1] (*i.e.* 31) is the third smallest value.
 
+## Vector arithmetics 
 
+>"*California had the most murders, but does this mean it is the most dangerous state? What if
+it just has many more people than any other state? We can quickly confirm that California
+indeed has the largest population:*"
 
+```{r}
+murders$state[which.max(murders$population)]
+```
 
+>"*with over 37 million inhabitants. It is therefore unfair to compare the totals if we are
+interested in learning how safe the state is. What we really should be computing is the
+murders per capita. The reports we describe in the motivating section used murders per
+100,000 as the unit. To compute this quantity, the powerful vector arithmetic capabilities
+of R come in handy.*"
