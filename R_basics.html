@@ -368,6 +368,7 @@ Data Types</a></li>
 <li><a href="#vectors-and-sorting" id="toc-vectors-and-sorting"><span class="toc-section-number">2</span> Vectors and Sorting</a>
 <ul>
 <li><a href="#creating-vectors" id="toc-creating-vectors"><span class="toc-section-number">2.1</span> Creating vectors</a></li>
+<li><a href="#sort" id="toc-sort"><span class="toc-section-number">2.2</span> Sort</a></li>
 </ul></li>
 </ul>
 </div>
@@ -844,31 +845,188 @@ as.numeric(x)</code></pre>
 <div id="exercise" class="section level4" number="2.1.3.1">
 <h4><span class="header-section-number">2.1.3.1</span> Exercise</h4>
 <ol style="list-style-type: decimal">
-<li>Use the function c to create a vector with the average high
-temperatures in January for Beijing, Lagos, Paris, Rio de Janeiro, San
-Juan, and Toronto, which are 35, 88, 42, 84, 81, and 30 degrees
-Fahrenheit. Call the object temp.</li>
-<li>Now create a vector with the city names and call the object
-city.<br />
+<li>Use the function <code>c()</code> to create a vector with the
+average high temperatures in January for Beijing, Lagos, Paris, Rio de
+Janeiro, San Juan, and Toronto, which are 35, 88, 42, 84, 81, and 30
+degrees Fahrenheit. Call the object <code>temp</code>.<br />
 </li>
-<li>Use the names function and the objects defined in the previous
-exercises to associate the temperature data with its corresponding
-city.</li>
-<li>Use the [ and : operators to access the temperature of the first
-three cities on the list.</li>
-<li>Use the [ operator to access the temperature of Paris and San
-Juan.</li>
-<li>Use the : operator to create a sequence of numbers
-12,13,14,…,73.</li>
+<li>Now create a vector with the city names and call the object
+<code>city</code>.<br />
+</li>
+<li>Use the <code>names()</code> function and the objects defined in the
+previous exercises to associate the temperature data with its
+corresponding city.<br />
+</li>
+<li>Use the <code>[</code> and <code>:</code> operators to access the
+temperature of the first three cities on the list.<br />
+</li>
+<li>Use the <code>[</code> operator to access the temperature of Paris
+and San Juan.<br />
+</li>
+<li>Use the <code>:</code> operator to create a sequence of numbers
+12,13,14,…,73.<br />
+</li>
 <li>Create a vector containing all the positive odd numbers smaller than
-100.</li>
+100.<br />
+</li>
 <li>Create a vector of numbers that starts at 6, does not pass 55, and
 adds numbers in increments of 4/7: 6, 6 + 4/7, 6 + 8/7, and so on. How
-many numbers does the list have? Hint: use seq and length.</li>
-<li>What is the class of the following object a &lt;- seq(1, 10, 0.5)?
-10. What is the class of the following object a &lt;- seq(1, 10)?</li>
+many numbers does the list have? (Hint: use <code>seq()</code> and
+<code>length()</code>)<br />
+</li>
+<li>What is the class of the following object
+<code>a &lt;- seq(1, 10, 0.5)</code>?<br />
+</li>
+<li>What is the class of the following object
+<code>a &lt;- seq(1, 10)</code></li>
 </ol>
+<pre class="r"><code># 1 &amp; 2: Create vectors
+temp &lt;- c(35,88,42,84,81,30)
+city &lt;- c(&quot;Beijing&quot;,&quot;Lagos&quot;,&quot;Paris&quot;,&quot;Rio de Janeiro&quot;,&quot;San Juan&quot;, &quot;Toronto&quot;)
+# 3: Assign the city names to the temp vector
+names(temp) &lt;- city 
+# 4: Access the temperature of the first 3 cities (indexing starts at 1 in R)
+temp[1:3] # NOT temp[0:3] — index 0 does nothing in R</code></pre>
+<pre><code>## Beijing   Lagos   Paris 
+##      35      88      42</code></pre>
+<pre class="r"><code># 5: Access the temperature of Paris and San Juan
+temp[c(&quot;Paris&quot;,&quot;San Juan&quot;)]</code></pre>
+<pre><code>##    Paris San Juan 
+##       42       81</code></pre>
+<pre class="r"><code># 6: Sequence from 12 to 73
+12:73</code></pre>
+<pre><code>##  [1] 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36
+## [26] 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61
+## [51] 62 63 64 65 66 67 68 69 70 71 72 73</code></pre>
+<pre class="r"><code># 7: Positive odd numbers &lt; 100
+seq(1,100,by=2)</code></pre>
+<pre><code>##  [1]  1  3  5  7  9 11 13 15 17 19 21 23 25 27 29 31 33 35 37 39 41 43 45 47 49
+## [26] 51 53 55 57 59 61 63 65 67 69 71 73 75 77 79 81 83 85 87 89 91 93 95 97 99</code></pre>
+<pre class="r"><code># 8: Create a sequence starting at 6, going up in steps of 4/7 until ≤ 55
+increment &lt;- seq(6,55, by=4/7)
+length(increment)</code></pre>
+<pre><code>## [1] 86</code></pre>
+<pre class="r"><code># 9: Class of a &lt;- seq(1, 10, 0.5)
+a &lt;-seq(1,10,0.5)
+class(a)</code></pre>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<pre class="r"><code># 10: Class of a &lt;- seq(1, 10)
+a &lt;-seq(1,10)
+class(a)</code></pre>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
 </div>
+</div>
+</div>
+<div id="sort" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Sort</h2>
+<p><strong>Say we want to rank the states from least to most gun
+murders</strong>. The function sort sorts a vector in increasing order.
+We can therefore see the largest number of gun murders by typing:</p>
+<pre class="r"><code>sort(murders$total)</code></pre>
+<pre><code>##  [1]    2    4    5    5    7    8   11   12   12   16   19   21   22   27   32
+## [16]   36   38   53   63   65   67   84   93   93   97   97   99  111  116  118
+## [31]  120  135  142  207  219  232  246  250  286  293  310  321  351  364  376
+## [46]  413  457  517  669  805 1257</code></pre>
+<p>However, this does not give us information about which states have
+which murder totals. For example, we don’t know which state had
+1257.</p>
+<div id="order" class="section level3" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Order</h3>
+<p>The function <code>order</code> is closer to what we want. It takes a
+vector as input and returns the vector of indexes that sorts the input
+vector. This may sound confusing so let’s look at a simple example. We
+can create a vector and sort it:</p>
+<pre class="r"><code>x &lt;- c(31, 4, 15,92,65)
+sort(x)</code></pre>
+<pre><code>## [1]  4 15 31 65 92</code></pre>
+<p>Rather than sort the input vector, the function order returns the
+index that sorts input vector:</p>
+<pre class="r"><code>order(x) # As 4 is the smallest value, order return it&#39;s index 2 </code></pre>
+<pre><code>## [1] 2 3 1 5 4</code></pre>
+<p>How does this help us order the states by murders? First, remember
+that the entries of vectors you access with $ follow the same order as
+the rows in the table. For example, these two vectors containing state
+names and abbreviations, respectively, are matched by their order:</p>
+<pre class="r"><code>murders$state[1:6]</code></pre>
+<pre><code>## [1] &quot;Alabama&quot;    &quot;Alaska&quot;     &quot;Arizona&quot;    &quot;Arkansas&quot;   &quot;California&quot;
+## [6] &quot;Colorado&quot;</code></pre>
+<pre class="r"><code>murders$abb[1:6]</code></pre>
+<pre><code>## [1] &quot;AL&quot; &quot;AK&quot; &quot;AZ&quot; &quot;AR&quot; &quot;CA&quot; &quot;CO&quot;</code></pre>
+<p>This means we can order the state names by their total murders. We
+first obtain the index that orders the vectors according to murder
+totals and then index the state names vector:</p>
+<pre class="r"><code>ind &lt;- order(murders$total) # Get indices of states sorted by total murders
+murders$state[ind]          # Return states ordered by increasing murders</code></pre>
+<pre><code>##  [1] &quot;Vermont&quot;              &quot;North Dakota&quot;         &quot;New Hampshire&quot;       
+##  [4] &quot;Wyoming&quot;              &quot;Hawaii&quot;               &quot;South Dakota&quot;        
+##  [7] &quot;Maine&quot;                &quot;Idaho&quot;                &quot;Montana&quot;             
+## [10] &quot;Rhode Island&quot;         &quot;Alaska&quot;               &quot;Iowa&quot;                
+## [13] &quot;Utah&quot;                 &quot;West Virginia&quot;        &quot;Nebraska&quot;            
+## [16] &quot;Oregon&quot;               &quot;Delaware&quot;             &quot;Minnesota&quot;           
+## [19] &quot;Kansas&quot;               &quot;Colorado&quot;             &quot;New Mexico&quot;          
+## [22] &quot;Nevada&quot;               &quot;Arkansas&quot;             &quot;Washington&quot;          
+## [25] &quot;Connecticut&quot;          &quot;Wisconsin&quot;            &quot;District of Columbia&quot;
+## [28] &quot;Oklahoma&quot;             &quot;Kentucky&quot;             &quot;Massachusetts&quot;       
+## [31] &quot;Mississippi&quot;          &quot;Alabama&quot;              &quot;Indiana&quot;             
+## [34] &quot;South Carolina&quot;       &quot;Tennessee&quot;            &quot;Arizona&quot;             
+## [37] &quot;New Jersey&quot;           &quot;Virginia&quot;             &quot;North Carolina&quot;      
+## [40] &quot;Maryland&quot;             &quot;Ohio&quot;                 &quot;Missouri&quot;            
+## [43] &quot;Louisiana&quot;            &quot;Illinois&quot;             &quot;Georgia&quot;             
+## [46] &quot;Michigan&quot;             &quot;Pennsylvania&quot;         &quot;New York&quot;            
+## [49] &quot;Florida&quot;              &quot;Texas&quot;                &quot;California&quot;</code></pre>
+<pre class="r"><code>murders$state[tail(ind, 3)] # last 3 states in the sorted index</code></pre>
+<pre><code>## [1] &quot;Florida&quot;    &quot;Texas&quot;      &quot;California&quot;</code></pre>
+</div>
+<div id="entry-with-the-largest-values-max-and-which.max" class="section level3" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Entry with the
+largest values : <code>max</code> and <code>which.max</code></h3>
+<p>If we are only interested in the entry with the largest value, we can
+use <code>max</code> for the value and <code>which.max</code> for the
+index of the largest value (idem for <code>min</code> and
+<code>which.min</code>)</p>
+<pre class="r"><code>max(murders$total) </code></pre>
+<pre><code>## [1] 1257</code></pre>
+<pre class="r"><code>i_max &lt;- which.max(murders$total)
+murders$state[i_max] </code></pre>
+<pre><code>## [1] &quot;California&quot;</code></pre>
+</div>
+<div id="rank" class="section level3" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Rank</h3>
+<p>The rank() function gives us the ranks of the items in the original
+vector.</p>
+<pre class="r"><code>x &lt;- c(31, 4, 15,92,65)
+
+sort_x &lt;- sort(x)
+order_x &lt;- order(x)
+rank_x &lt;- rank(x) 
+
+# We construct a data frame to compare the behavior of each function
+# Use `=` for naming argument inside functions
+compare_sort_function_df &lt;- data.frame(
+  Original = x,         # Original values
+  Sorted   = sort_x,    # Sorted values (increasing)
+  Ordered  = order_x,   # Index positions to sort the original vector
+  Ranked   = rank_x     # Rank of each value in the original vector
+)
+
+print(compare_sort_function_df)</code></pre>
+<pre><code>##   Original Sorted Ordered Ranked
+## 1       31      4       2      3
+## 2        4     15       3      1
+## 3       15     31       1      2
+## 4       92     65       5      5
+## 5       65     92       4      4</code></pre>
+<p>In the table below, we observe that:</p>
+<ul>
+<li><p><code>sort()</code> returns the values of x in increasing
+order.</p></li>
+<li><p><code>order()</code> returns the indices that would sort the
+vector. For example, in the first row, 2 means the smallest value is at
+position 2 in x.</p></li>
+<li><p><code>rank()</code> returns the rank (position in the sorted
+vector) of each value in x. For example, in the first row, the value 3
+means that x[1] (<em>i.e.</em> 31) is the third smallest value.</p></li>
+</ul>
 </div>
 </div>
 </div>

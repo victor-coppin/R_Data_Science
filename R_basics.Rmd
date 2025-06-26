@@ -439,3 +439,84 @@ a <-seq(1,10)
 class(a)
 ```
 
+
+## Sort
+
+**Say we want to rank the states from least to most gun murders**. 
+The function sort sorts a vector in increasing order. We can therefore see the largest number of gun murders by typing:
+```{r}
+sort(murders$total)
+```
+
+However, this does not give us information about which states have which murder totals. For example, we don’t know which state had 1257.
+
+### Order 
+
+The function `order` is closer to what we want. It takes a vector as input and returns the vector of indexes that sorts the input vector. This may sound confusing so let’s look at a simple example. We can create a vector and sort it:
+```{r}
+x <- c(31, 4, 15,92,65)
+sort(x)
+```
+
+Rather than sort the input vector, the function order returns the index that sorts input vector:
+```{r}
+order(x) # As 4 is the smallest value, order return it's index 2 
+```
+
+
+How does this help us order the states by murders? First, remember that the entries of vectors you access with $ follow the same order as the rows in the table. For example, these two vectors containing state names and abbreviations, respectively, are matched by their order:
+```{r}
+murders$state[1:6]
+murders$abb[1:6]
+
+```
+
+This means we can order the state names by their total murders. We first obtain the index that orders the vectors according to murder totals and then index the state names vector:
+```{r}
+ind <- order(murders$total) # Get indices of states sorted by total murders
+murders$state[ind]          # Return states ordered by increasing murders
+murders$state[tail(ind, 3)] # last 3 states in the sorted index
+```
+
+### Entry with the largest values : `max` and `which.max`
+
+If we are only interested in the entry with the largest value, we can use `max` for the value and `which.max` for the index of the largest value (idem for `min` and `which.min`)
+```{r}
+max(murders$total) 
+i_max <- which.max(murders$total)
+murders$state[i_max] 
+```
+
+### Rank
+
+The rank() function gives us the ranks of the items in the original vector.
+```{r}
+x <- c(31, 4, 15,92,65)
+
+sort_x <- sort(x)
+order_x <- order(x)
+rank_x <- rank(x) 
+
+# We construct a data frame to compare the behavior of each function
+# Use `=` for naming argument inside functions
+compare_sort_function_df <- data.frame(
+  Original = x,         # Original values
+  Sorted   = sort_x,    # Sorted values (increasing)
+  Ordered  = order_x,   # Index positions to sort the original vector
+  Ranked   = rank_x     # Rank of each value in the original vector
+)
+
+print(compare_sort_function_df)
+```
+ 
+In the table below, we observe that:
+
+- `sort()` returns the values of x in increasing order.
+
+- `order()` returns the indices that would sort the vector. For example, in the first row, 2 means the smallest value is at position 2 in x.
+
+- `rank()` returns the rank (position in the sorted vector) of each value in x. For example, in the first row, the value 3 means that x[1] (*i.e.* 31) is the third smallest value.
+
+
+
+
