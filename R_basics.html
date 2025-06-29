@@ -441,7 +441,6 @@ regardless of which one was used to install the packages”</p>
 chunk : <code>Ctrl + Shift + Enter</code> - Hides messages
 (<em>i.e.</em> from library calls) : <code>{r, message=FALSE}</code></p>
 <pre class="r"><code>library(dslabs)</code></pre>
-<pre><code>## Warning: le package &#39;dslabs&#39; a été compilé avec la version R 4.4.3</code></pre>
 </div>
 <div id="running-commands" class="section level3" number="1.1.3">
 <h3><span class="header-section-number">1.1.3</span> Running
@@ -498,7 +497,19 @@ the names of the objects saved.</p>
 <pre class="r"><code>print(a)</code></pre>
 <pre><code>## [1] 1</code></pre>
 <pre class="r"><code>ls()</code></pre>
-<pre><code>## [1] &quot;a&quot;       &quot;b&quot;       &quot;c&quot;       &quot;murders&quot;</code></pre>
+<pre><code>##  [1] &quot;a&quot;                        &quot;b&quot;                       
+##  [3] &quot;c&quot;                        &quot;city&quot;                    
+##  [5] &quot;codes&quot;                    &quot;compare_sort_function_df&quot;
+##  [7] &quot;countries&quot;                &quot;i_max&quot;                   
+##  [9] &quot;inches&quot;                   &quot;increment&quot;               
+## [11] &quot;ind&quot;                      &quot;murder_rate&quot;             
+## [13] &quot;murders&quot;                  &quot;order_x&quot;                 
+## [15] &quot;pop&quot;                      &quot;rank_x&quot;                  
+## [17] &quot;region&quot;                   &quot;safe&quot;                    
+## [19] &quot;sort_x&quot;                   &quot;temp&quot;                    
+## [21] &quot;value&quot;                    &quot;west&quot;                    
+## [23] &quot;x&quot;                        &quot;y&quot;                       
+## [25] &quot;z&quot;</code></pre>
 </div>
 <div id="functions" class="section level3" number="1.2.2">
 <h3><span class="header-section-number">1.2.2</span> Functions</h3>
@@ -642,11 +653,11 @@ object</h4>
 glimpse(murders) # For compact data view </code></pre>
 <pre><code>## Rows: 51
 ## Columns: 5
-## $ state      &lt;chr&gt; &quot;Alabama&quot;, &quot;Alaska&quot;, &quot;Arizona&quot;, &quot;Arkansas&quot;, &quot;California&quot;, &quot;…
-## $ abb        &lt;chr&gt; &quot;AL&quot;, &quot;AK&quot;, &quot;AZ&quot;, &quot;AR&quot;, &quot;CA&quot;, &quot;CO&quot;, &quot;CT&quot;, &quot;DE&quot;, &quot;DC&quot;, &quot;FL&quot;,…
-## $ region     &lt;fct&gt; South, West, West, South, West, West, Northeast, South, Sou…
-## $ population &lt;dbl&gt; 4779736, 710231, 6392017, 2915918, 37253956, 5029196, 35740…
-## $ total      &lt;dbl&gt; 135, 19, 232, 93, 1257, 65, 97, 38, 99, 669, 376, 7, 12, 36…</code></pre>
+## $ state      [3m[38;5;246m&lt;chr&gt;[39m[23m &quot;Alabama&quot;[38;5;246m, [39m&quot;Alaska&quot;[38;5;246m, [39m&quot;Arizona&quot;[38;5;246m, [39m&quot;Arkansas&quot;[38;5;246m, [39m&quot;California&quot;[38;5;246m, [39m&quot;…
+## $ abb        [3m[38;5;246m&lt;chr&gt;[39m[23m &quot;AL&quot;[38;5;246m, [39m&quot;AK&quot;[38;5;246m, [39m&quot;AZ&quot;[38;5;246m, [39m&quot;AR&quot;[38;5;246m, [39m&quot;CA&quot;[38;5;246m, [39m&quot;CO&quot;[38;5;246m, [39m&quot;CT&quot;[38;5;246m, [39m&quot;DE&quot;[38;5;246m, [39m&quot;DC&quot;[38;5;246m, [39m&quot;FL&quot;[38;5;246m,[39m…
+## $ region     [3m[38;5;246m&lt;fct&gt;[39m[23m South[38;5;246m, [39mWest[38;5;246m, [39mWest[38;5;246m, [39mSouth[38;5;246m, [39mWest[38;5;246m, [39mWest[38;5;246m, [39mNortheast[38;5;246m, [39mSouth[38;5;246m, [39mSou…
+## $ population [3m[38;5;246m&lt;dbl&gt;[39m[23m 4779736[38;5;246m, [39m710231[38;5;246m, [39m6392017[38;5;246m, [39m2915918[38;5;246m, [39m37253956[38;5;246m, [39m5029196[38;5;246m, [39m35740…
+## $ total      [3m[38;5;246m&lt;dbl&gt;[39m[23m 135[38;5;246m, [39m19[38;5;246m, [39m232[38;5;246m, [39m93[38;5;246m, [39m1257[38;5;246m, [39m65[38;5;246m, [39m97[38;5;246m, [39m38[38;5;246m, [39m99[38;5;246m, [39m669[38;5;246m, [39m376[38;5;246m, [39m7[38;5;246m, [39m12[38;5;246m, [39m36…</code></pre>
 <p>We can see that murders is a <code>data.frame</code> with 51
 observations of 5 variables : - <code>$state</code>: a character
 variable like “Alabama” - <code>$abb</code> : character variable as the
@@ -848,7 +859,7 @@ impossible case, it usually gives us a warning and turns the entry into
 a special value called an NA for “not available”. For example:</p>
 <pre class="r"><code>x &lt;- c(&quot;1&quot;,&quot;b&quot;,&quot;3&quot;)
 as.numeric(x)</code></pre>
-<pre><code>## Warning: NAs introduits lors de la conversion automatique</code></pre>
+<pre><code>## Warning: NAs introduced by coercion</code></pre>
 <pre><code>## [1]  1 NA  3</code></pre>
 <div id="exercise" class="section level4" number="2.1.3.1">
 <h4><span class="header-section-number">2.1.3.1</span> Exercise</h4>
